@@ -36,11 +36,12 @@ def onServerInfo(server, info):
           server.tell(info.player, line)
       elif (args[1] == 'list'):
         if (len(afklist) > 0):
+          server.say('[AFK]:挂机玩家列表')
           for singleplayer in afklist:
             strmsg = singleplayer + ': ' + afklist[singleplayer]
-            server.tell(info.player,strmsg)
+            server.say(strmsg)
         else:
-          server.tell(info.player,'目前没人在挂机')
+          server.say('[AFK]:目前没人在挂机')
       elif (args[1] == 'kick'):
         if (len(args) != 4):
           server.tell(info.player,'参数格式不正确')
