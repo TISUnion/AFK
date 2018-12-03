@@ -12,7 +12,7 @@ helpmsg = '''------MCD AFK插件------
 --------------------------------'''
 
 def onServerInfo(server, info):
-  if info.isPlayer == 1:
+  if (info.isPlayer == 1):
     if info.content.startswith('!!afk'):
       args = info.content.split(' ')
       if (len(args) == 1):
@@ -51,4 +51,7 @@ def onServerInfo(server, info):
             afklist.pop(info.player)
           else:
             server.tell(info.player,'该玩家不在挂机状态!')
-      
+  elif (info.content.endswith('left the game')):
+    args = info.content.split(' ')
+    if args[0] in afklist:
+      afklist.pop(args[0])
